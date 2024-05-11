@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, useNavigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "../styles/navbar.css"
 import loginContext from '../context/loginContext'
 import toast from 'react-hot-toast';

@@ -9,6 +9,7 @@ function LoginPage() {
 
     const navigate=useNavigate()
     const { setIslogin } = useContext(loginContext);
+    setIslogin(false)
 
     const [userInfo,setuserInfo]=useState({
         email:"",
