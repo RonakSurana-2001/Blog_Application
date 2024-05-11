@@ -1,0 +1,40 @@
+.navbar-container{
+    display: flex;
+    flex-direction: row;
+    background-color:rgb(74, 74, 218);
+    color:whitesmoke;
+}
+
+.navbar-container-1{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding: 15px;
+    font-weight: bolder;
+}
+
+.navbar-container-2{
+    width: 40%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.grid-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-container-3{
+    width: 40%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    padding: 15px;
+    font-size: 20px;
+}
