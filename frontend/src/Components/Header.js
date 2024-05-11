@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useNavigate } from 'react-router-dom'
 import "../styles/navbar.css"
 import loginContext from '../context/loginContext'
 import toast from 'react-hot-toast';
@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 function Header() {
 
     const { Islogin, setIslogin } = useContext(loginContext);
+    const navigate=useNavigate()
     
     return (
         <>
@@ -26,6 +27,7 @@ function Header() {
                     {Islogin && <div><Link to="/login" style={{ textDecoration: "none", color: "white" }} onClick={()=>{
                         setIslogin(false);
                         localStorage.clear()
+                        navigate("/login")
                         toast.success("Logged Out")
                     }}>Logout</Link></div>}
                 </div>
