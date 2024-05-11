@@ -12,7 +12,7 @@ function Blogs() {
 
     const getAllBlogs = async () => {
         try{
-            const { data } = await axios.get("http://localhost:4000/blog/all-blog");
+            const { data } = await axios.get("https://blog-application-96st.onrender.com/blog/all-blog");
             if (data?.success) {
                 setBlogs(data.blogs)
             }

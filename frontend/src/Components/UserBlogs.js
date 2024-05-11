@@ -12,7 +12,7 @@ function UserBlogs() {
     const getUserBlogs = async () => {
         const userIdPart = localStorage.getItem('userId')
         try {
-            const{data} = await axios.get(`http://localhost:4000/blog/user-blog/${userIdPart}`)
+            const{data} = await axios.get(`https://blog-application-96st.onrender.com/blog/user-blog/${userIdPart}`)
             if (data.success) {
                 setBlogs(data.userBlog.blogs)
             }

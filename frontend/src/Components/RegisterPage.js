@@ -25,7 +25,7 @@ function RegisterPage() {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try{
-            const {data}=await axios.post("http://localhost:4000/user/register",{
+            const {data}=await axios.post("https://blog-application-96st.onrender.com/user/register",{
                 username:userInfo.username,
                 email:userInfo.email,
                 password:userInfo.password,

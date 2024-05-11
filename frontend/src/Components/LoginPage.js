@@ -29,7 +29,7 @@ function LoginPage() {
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try{
-            const {data}=await axios.post("http://localhost:4000/user/login",{
+            const {data}=await axios.post("https://blog-application-96st.onrender.com/user/login",{
                 email:userInfo.email,
                 password:userInfo.password,
             })

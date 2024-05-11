@@ -25,7 +25,7 @@ export default function BlogCard({title,description,id,image,username,isUser}) {
 
   const handleDelete=async()=>{
     try{
-      const {data}=await axios.delete(`http://localhost:4000/blog/delete-blog/${id}`)
+      const {data}=await axios.delete(`https://blog-application-96st.onrender.com/blog/delete-blog/${id}`)
       if(data.success){
         toast.success("Deleted Successfully")
         window.location.reload()

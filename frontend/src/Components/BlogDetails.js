@@ -12,7 +12,7 @@ function BlogDetails() {
 
     const getBlogDetails = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:4000/blog/get-blog/${id}`)
+            const { data } = await axios.get(`https://blog-application-96st.onrender.com/blog/get-blog/${id}`)
             if (data?.success) {
                 setBlog(data?.blogs)
             }
@@ -33,7 +33,7 @@ function BlogDetails() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post(`http://localhost:4000/blog/update-blog/${id}`, {
+            const { data } = await axios.post(`https://blog-application-96st.onrender.com/blog/update-blog/${id}`, {
                 title: blog.title,
                 description: blog.description,
                 image: blog.image,
