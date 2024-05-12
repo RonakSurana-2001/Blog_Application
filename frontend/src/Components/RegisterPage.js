@@ -37,6 +37,7 @@ function RegisterPage() {
                 navigate('/login')
             }
         } catch(error){
+            toast.error('User Already Registered')
             console.log(error)
         }
     }
