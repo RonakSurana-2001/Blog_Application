@@ -38,3 +38,35 @@
     padding: 15px;
     font-size: 20px;
 }
+
+@media screen and (max-width:800px){
+    .navbar-container{
+        display: flex;
+        flex-direction: column;
+        background-color:rgb(74, 74, 218);
+        color:whitesmoke;
+        width: 100%;
+    }    
+    .navbar-container-1{
+        width: 100%;
+    }
+    .navbar-container-3{
+        width: 100%;
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        padding: 15px;
+        font-size: 20px;
+    }
+    .navbar-container-2{
+        width: 100%;
+        display: grid;
+        /* background-color: bisque; */
+        grid-template-columns: auto;
+        padding: 15px;
+        font-size: 20px;
+    }
+    .grid-item{
+        padding: 10px;
+    }
+}
