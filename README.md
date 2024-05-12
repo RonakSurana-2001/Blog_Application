@@ -14,7 +14,7 @@ Mongo DB, Express JS, Node JS, React JS
 - Read Public Blogs
 - Update a Blog posted by you
 - Delete a blog posted by you  
-
+- Autosave blog
 
 ## Authors
 
