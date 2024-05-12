@@ -2,6 +2,7 @@ const express=require("express")
 const blogModel = require("../models/blogModel")
 const userModel=require("../models/User")
 const mongoose=require("mongoose")
+const tempData=require("../models/tempDataModel")
 
 const { route } = require("./user")
 
@@ -170,6 +171,66 @@ router.get("/user-blog/:id",async(req,res)=>{
     } catch(error){
         console.log(error)
         return res.status(400).send({
+            success:false,
+            message:"error while deleting blog",
+            error
+        })
+    }
+})
+
+router.post('/get-temp-data',async(req,res)=>{
+    try{
+        const userId=req.body.user
+        const userBlogTemp=await tempData.find({user:userId});
+        if(!userBlogTemp){
+            return res.status(404).send({
+                success:false,
+                message:"Blogs not found with this id"
+            })
+        }
+        return res.status(200).send({
+            success:true,
+            message:"user blogs",
+            userBlogTemp
+        })
+    } catch(error){
+        console.log(error)
+        return res.status(500).send({
+            success:false,
+            message:"error while deleting blog",
+            error
+        })
+    }
+})
+
+router.post('/set-temp-data',async(req,res)=>{
+    try{
+        const userId=req.body.user
+        const findUserExistence=await tempData.find({user:userId});
+        if(findUserExistence.length>0){
+            const userBlogTemp = await tempData.findOneAndUpdate({user:userId}, { ...req.body }, { new: true });
+            if(!userBlogTemp){
+                return res.status(500).send({
+                    success:false,
+                    message:"blog not updated",
+                })
+            }
+            return res.status(200).send({
+                success:true,
+                message:"blog updated",
+            })
+        }
+        else{
+            const userBlogTemp=new tempData(req.body)
+            await userBlogTemp.save()
+            return res.status(200).send({
+                success:true,
+                message:"blog temp created",
+            })
+        }
+    } catch(error){
+        console.log(error)
+        return res.status(500).send({
             success:false,
             message:"error while deleting blog",
             error

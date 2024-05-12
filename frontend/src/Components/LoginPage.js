@@ -38,6 +38,7 @@ function LoginPage() {
                 localStorage.setItem('userId',data.user._id)
                 localStorage.setItem('userIdState',true)
                 setIslogin(true)
+                toast.success("Login Successfully")
                 navigate('/all-blogs')
             }
         } catch(error){

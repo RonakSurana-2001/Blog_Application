@@ -1,9 +1,10 @@
-import React, { useState,useContext } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import "../styles/registerPage.css"
 import {  useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import loginContext from '../context/loginContext'
-
+import toast from 'react-hot-toast';
+import  { Toaster } from 'react-hot-toast';
 function CreateBlog() {
     const {  setIslogin } = useContext(loginContext);
     setIslogin(true)
@@ -32,13 +33,62 @@ function CreateBlog() {
                 user: localStorage.getItem('userId')
             })
             if (data.success) {
+                toast.success("Blog Created")
                 navigate('/all-blogs')
             }
         } catch (error) {
             console.log(error)
         }
+        try{
+            const {data}=await axios.post("https://blog-application-96st.onrender.com/blog/set-temp-data",{
+                title: "",
+                description: "",
+                image: "",
+                user: localStorage.getItem('userId')
+            })
+        } catch(error){
+            console.log(error)
+        }
     }
+
+    useEffect(() => {
+        const autoSave = async() => {
+            try{
+                const {data}=await axios.post("https://blog-application-96st.onrender.com/blog/set-temp-data",{
+                    title: blogInfo.title,
+                    description: blogInfo.description,
+                    image: blogInfo.image,
+                    user: localStorage.getItem('userId')
+                })
+            } catch(error){
+                console.log(error)
+            }
+        }
+        autoSave()
+    }, [blogInfo]); 
+
+    useEffect(()=>{
+        let getAllData=async()=>{
+            try{
+                const {data}=await axios.post("https://blog-application-96st.onrender.com/blog/get-temp-data",{
+                    user:localStorage.getItem("userId")
+                })
+                if(data.success){
+                    setblogInfo({
+                        title:data.userBlogTemp[0].title,
+                        description:data.userBlogTemp[0].description,
+                        image:data.userBlogTemp[0].image
+                    })
+                }
+            } catch(error){
+                console.log(error)
+            }
+        }
+        getAllData()
+    },[])
+
     return (
+        <>
         <div className='register-container'>
             <div className='register-container-circle'>
                 <div className='register-container-header'>
@@ -54,6 +104,7 @@ function CreateBlog() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
