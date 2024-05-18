@@ -18,7 +18,7 @@ function LoginPage() {
 
     useEffect(()=>{
         setIslogin(true)
-    },[])
+    },[setIslogin])
 
     const handleChange=(e)=>{
         setuserInfo((prevState)=>({
